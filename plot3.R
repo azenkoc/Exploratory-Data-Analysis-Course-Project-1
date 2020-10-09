@@ -1,0 +1,16 @@
+#Azen Koc plot 3
+png("plot3.png")
+alldata<-fread("household_power_consumption.txt")
+alldata$Date<-as.Date(alldata$Date,"%d/%m/%Y")
+t1<-as.Date("2007-02-01","%Y-%m-%d")
+t2<-as.Date("2007-02-02","%Y-%m-%d")
+data<-alldata[alldata$Date>=t1&alldata$Date<=t2]
+timeDate <- strptime(paste(data$Date, data$Time, sep=" "), "%Y-%m-%d %H:%M:%S") 
+Sub_metering_1<-as.numeric(data$Sub_metering_1)
+Sub_metering_2<-as.numeric(data$Sub_metering_2)
+Sub_metering_3<-as.numeric(data$Sub_metering_3)
+plot(timeDate,Sub_metering_1,type = "l",ylab = "Energy sub metering",xlab = "Weekdays (In Turkish)")
+lines(timeDate, Sub_metering_2,type = "l",col="red")
+lines(timeDate, Sub_metering_3, type = "l",col="blue")
+legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),lty = 1,col = c("black","red","blue"))
+dev.off()
