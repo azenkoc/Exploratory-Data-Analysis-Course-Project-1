@@ -8,8 +8,6 @@ t2<-as.Date("2007-02-02","%Y-%m-%d")
 data<-alldata[alldata$Date>=t1&alldata$Date<=t2]
 x<-as.numeric(data$Global_active_power)
 
-# hist(x)
-# title(main="Global Active Power",xlab = "Global Active Power (kilowatts)",ylab = "Frequency")
 hist(x,col="red",main="Global Active Power",xlab="Global Active Power(kilowatts)")
 
 dev.off()
